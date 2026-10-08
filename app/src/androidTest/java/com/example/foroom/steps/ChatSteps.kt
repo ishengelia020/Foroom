@@ -45,4 +45,10 @@ class ChatSteps {
         onView(chatsPage.chatCard(chatName)).waitUntilVisible(10)
         return this
     }
+
+    fun openChat(chatName: String): ChatSteps {
+        searchChat(chatName)
+        onView(chatsPage.openChatButton(chatName)).tap(10)
+        return this
+    }
 }

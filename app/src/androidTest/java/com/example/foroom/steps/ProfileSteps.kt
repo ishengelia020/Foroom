@@ -7,6 +7,7 @@ import com.example.foroom.Helper.waitUntilVisible
 import com.example.foroom.pages.ChangeLanguagePage
 import com.example.foroom.pages.ChangePasswordPage
 import com.example.foroom.pages.ChatsPage
+import com.example.foroom.pages.LoginPage
 import com.example.foroom.pages.ProfilePage
 
 class ProfileSteps {
@@ -14,6 +15,7 @@ class ProfileSteps {
     private val profilePage = ProfilePage()
     private val changePasswordPage = ChangePasswordPage()
     private val changeLanguagePage = ChangeLanguagePage()
+    private val loginPage = LoginPage()
 
     fun openProfile(): ProfileSteps {
         onView(chatsPage.profileNavigationButton).tap(10)
@@ -43,6 +45,13 @@ class ProfileSteps {
 
     fun verifyChangeLanguageLabel(expectedLabel: String): ProfileSteps {
         onView(profilePage.changeLanguageLabel(expectedLabel)).waitUntilVisible(10)
+        return this
+    }
+
+    fun signOut(): ProfileSteps {
+        onView(chatsPage.profileNavigationButton).tap(10)
+        onView(profilePage.signOutItem).tap(10)
+        onView(loginPage.logInButton).waitUntilVisible(10)
         return this
     }
 }
